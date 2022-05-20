@@ -1,0 +1,209 @@
+$mainColor: #005FA3
+$bgColorG: #EBEBEB
+$bgColorW: #FFFFFF
+$selectColor: #2393e4
+$mainFont: 'Merriweather', normal
+$fontColor: white
+$headerColor: #BDBDBD
+$useFont: 'Lato', normal
+
+*
+	margin: 0
+	padding: 0
+	text-decoration: none
+	list-style: none
+
+@mixin for-phone-only
+	@media (max-width: 750px)
+		@content
+	
+@mixin mixBtn($bgColor: $mainColor, $mColor: $fontColor)
+	width: 270px
+	height: 60px
+	background-color: $bgColor
+	color: $mColor
+	cursor: pointer
+	display: flex
+	align-items: center
+	justify-content: center
+	font-weight: 400
+	font-family: $useFont
+	font-size: 18px
+
+@mixin mxSection($tHeight: 100%, $bgColor: $bgColorG)
+	width: 100%
+	height: $tHeight
+	background-color: $bgColor
+	display: flex
+	justify-content: center
+
+	@include for-phone-only
+		height: auto
+
+
+@mixin mxSectionBlocks($tHeight: 100%, $tPadding: 0, $width: 70%)
+	width: $width
+	height: $tHeight
+	margin: $tPadding 0
+	display: flex
+	justify-content: space-between
+	flex-direction: column
+	//align-items: center
+
+@mixin mixService($bgColor: $mainColor, $mColor: $fontColor)
+	width: 350px
+	height: 360px
+	background-color: $bgColor
+	color: $mColor
+	cursor: pointer
+	display: flex
+	align-items: flex-end
+	justify-content: flex-end
+	flex-direction: column
+
+
+@mixin mixRootBlock($tHeight: 100%)
+	width: 100%
+	height: $tHeight
+	background-size: cover
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+
+@mixin mixTrigger($bgColor: $mainColor, $opacity: none)
+	height: 60px
+	width: 60px
+	display: flex
+	justify-content: center
+	align-items: center
+	font-size: 50px
+	font-weight: bold
+	color: white
+	background-color: $bgColor
+	opacity: $opacity
+	cursor: pointer
+
+@mixin mixPointer($bgColor: $mainColor)
+	width: 15px
+	height: 15px
+	background-color: $bgColor
+	border-radius: 50%
+	cursor: pointer
+	opacity: 0.4
+
+%main-shared	
+	font-family: $mainFont
+	font-weight: 700
+	font-size: 48px
+	color: $fontColor
+	
+%h2-shared
+	padding: 10px 0
+	font-family: $useFont
+	color: $headerColor
+	font-weight: 900
+	font-size: 24px
+
+%text-shared
+	padding: 10px 0
+	font-family: $useFont
+	color: $fontColor
+	font-weight: 300
+	font-size: 14px
+
+%block-shared
+	padding: 40px
+	font-family: $useFont
+	color: $fontColor
+	font-weight: 900
+	font-size: 24px	
+	display: flex
+	flex-direction: column
+	align-items: flex-start
+	justify-content: flex-end
+
+h1
+	@extend %main-shared
+	width: 65%
+
+	@include for-phone-only
+		width: 100%
+		text-align: center		
+
+
+.blockInfo
+	@include mxSectionBlocks(80%, 5%)
+
+	h2
+		@extend %h2-shared
+
+	h3
+		@extend %main-shared
+		color: black
+
+a
+	color: $fontColor
+
+.header
+	display: flex
+	height: 12%
+	flex-direction: column
+	justify-content: space-between
+
+.textBlock
+	@extend %block-shared
+	transition: color 0.3s ease
+
+	@include for-phone-only
+		width: 80%
+
+	&:hover
+		color: white
+
+.sliderTrigger
+	display: flex
+	justify-content: space-between
+
+	&>div
+		@include mixTrigger($mainColor, 0.2)
+		transition: background-color 0.3s ease
+
+		&:hover
+			background-color: $mainColor
+			opacity: 1
+
+.sliderFootter
+	@include mxSectionBlocks(20%, 0, 100%)
+	flex-direction: row
+
+	.sliderPoints
+		display: flex
+		justify-content: center
+		align-items: center
+
+		&>li
+			@include mixPointer($mainColor)
+			transition: opacity 0.3s ease, background 0.3s ease
+					
+			&:hover
+				opacity: 1
+				background-color: $mainColor
+
+			&.active 
+				opacity: 1
+				background-color: $mainColor
+						
+		&>li+li
+			margin-left: 20px
+
+
+
+@import 'menu'
+@import 'sliderContainer'
+@import 'services'
+@import 'about'
+@import 'clients'
+@import 'response'
+@import 'contacts'
+@import 'footer'

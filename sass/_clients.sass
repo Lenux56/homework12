@@ -1,0 +1,24 @@
+#clients
+	@include mxSection(600px, $bgColorG)
+
+	.header
+		height: 20%
+
+	#clientsRoot
+		width: 100%
+		height: 70%
+
+		.sliderClientContainer
+			@include mixRootBlock()
+			
+			.sliderClientMain
+				@include mxSectionBlocks(100%, 0, 100%)
+				flex-direction: row
+				align-items: center
+
+				@include for-phone-only
+					justify-content: center
+					padding-bottom: 10px
+
+
+			

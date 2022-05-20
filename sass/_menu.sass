@@ -1,0 +1,96 @@
+nav
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 100%
+	padding: 20px 0
+	cursor: pointer
+
+	& > div
+		width: 70%
+		display: flex
+		justify-content: space-between
+
+	.logo
+		display: flex
+		width: 20%
+		justify-content: space-between
+		align-items: center
+		color: $mainColor
+		font-family: $mainFont
+		font-weight: 900
+		font-size: 36px
+	
+	.menu
+		display: flex
+		width: 60%
+		
+		ul
+			display: flex
+			justify-content: space-between
+			align-items: center
+			width: 100%
+			font-family: $useFont
+			font-weight: 700
+			font-size: 14px
+			letter-spacing: 0.1em
+			text-transform: uppercase
+
+		a
+			color: black
+
+		@include for-phone-only
+			display: none
+
+	#burgerMenu	
+		display: none
+
+		@include for-phone-only
+			display: flex
+			align-items: center
+			font-size: 35px
+			transition: font 0.5s ease
+
+			&:hover
+				font-size: 40px
+
+		.drDown
+			
+			display: flex
+			justify-content: space-evenly
+			align-items: center
+			@extend %h2-shared
+			float: right
+			position: relative
+		
+			ul
+				width: 200px
+				height: auto
+				background-color: $bgColorW
+				display: none
+				position: absolute
+				top: 120%
+				right: 0
+				z-index: 1
+				flex-direction: column
+				justify-content: center
+				align-items: center
+				border: 1px solid $bgColorG
+
+				li
+					width: 100%
+					text-align: center
+					transition: background 0.5s ease
+
+				li:hover
+					background-color: $bgColorG
+
+			a
+				width: 100%
+				display: block
+				color: $mainColor
+
+			.show
+				display: flex
+
+			
